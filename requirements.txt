@@ -1,0 +1,6 @@
+# dsh-image-read 的 Python 依赖（解释器见 img.config.json 的 python）
+numpy>=2.0
+Pillow>=10.0
+opencv-python>=4.9
+# 仅在用 chart_read 读 PDF 图表时取消注释：
+# pdfplumber>=0.11

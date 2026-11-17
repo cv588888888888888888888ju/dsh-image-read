@@ -618,7 +618,11 @@ def main() -> int:
         return 0
     try:
         index = sys.argv.index("--config")
-        cfg = json.loads(Path(sys.argv[index + 1]).read_text("utf-8"))
+        cfg_path = Path(sys.argv[index + 1])
+        cfg = json.loads(cfg_path.read_text("utf-8"))
+        chart_root = str(cfg.get("chart2dataRoot") or "")
+        if chart_root and not Path(chart_root).is_absolute():
+            cfg["chart2dataRoot"] = str((cfg_path.parent / chart_root).resolve())
     except (ValueError, IndexError, OSError) as exc:
         print(json.dumps(err("E_CONFIG", f"读配置失败: {exc}"), ensure_ascii=False))
         return 0

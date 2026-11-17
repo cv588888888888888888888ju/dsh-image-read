@@ -1,0 +1,12 @@
+{
+  "frame_tolerance_px": 1,
+  "ticks_min_each": 5,
+  "png_max_abs_fit_err": 0.08,
+  "sample_max_abs_y_err": 0.15,
+  "jpg_sample_max_abs_y_err": 0.2,
+  "black_max_abs_fit_err": 0.08,
+  "max_abs_coeff_err": 0.02,
+  "ledger_hit_requires_sha": true,
+  "pdf_max_abs_coeff_err": 0.01,
+  "pdf_max_abs_fit_err": 0.002
+}

@@ -12,14 +12,14 @@ const ctx = {
 }
 const dispose = plugin.apply(ctx, {})
 
-// chart_read 依赖外部 chart2data 与一张图表图；用 CHART_FIXTURE 显式开启。
-const chartFixture = process.env.CHART_FIXTURE || ''
-if (chartFixture && fs.existsSync(chartFixture)) {
+// chart_read 用仓库自带的图表夹具（三线图）；CHART_FIXTURE 可换成自己的图。
+const chartFixture = process.env.CHART_FIXTURE || path.join(HERE, 'fixtures', 'chart', 'sample_plot.png')
+if (fs.existsSync(chartFixture)) {
   assert.ok(registered.has('chart_read'), 'chart_read 未注册')
   const tool = registered.get('chart_read')
   const ok = JSON.parse(await tool.execute({ image: chartFixture }))
   assert.equal(ok.ok, true, JSON.stringify(ok))
-  assert.equal(ok.series.length, 2)
+  assert.ok(ok.series.length >= 2, 'series=' + ok.series.length)
   for (const series of ok.series) assert.ok(series.fit.r2 >= 0.99)
   assert.ok(ok.series[0].points_preview.length <= 40)
   const missing = JSON.parse(await tool.execute({ image: '/tmp/definitely-not-here.png' }))

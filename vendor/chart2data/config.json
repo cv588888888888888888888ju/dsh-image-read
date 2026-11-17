@@ -1,0 +1,68 @@
+{
+  "background": {
+    "corner_frac": 0.04
+  },
+  "frame": {
+    "ink_delta": 110,
+    "line_ratio": 0.55,
+    "min_line_len_px": 60
+  },
+  "ticks": {
+    "band_px": 10,
+    "min_count_px": 2,
+    "min_extent_px": 3,
+    "group_gap_px": 2,
+    "max_ticks": 40
+  },
+  "extract": {
+    "margin_px": 3,
+    "sat_diff": 32,
+    "ink_min_delta": 50,
+    "kmeans_k": 6,
+    "kmeans_iters": 30,
+    "merge_center_dist": 45,
+    "close_dist": 90,
+    "min_pixels": 100,
+    "dark_thresh": 100,
+    "grid_gray_tol": 12,
+    "grid_min_frac": 0.02,
+    "sample_stride": 1,
+    "max_series": 8
+  },
+  "fit": {
+    "degree_max": 6,
+    "min_rel_improve_frac": 0.05,
+    "min_points": 8,
+    "rmse_warn_frac": 0.02
+  },
+  "render": {
+    "width_px": 960,
+    "height_px": 640,
+    "padding_frac": 0.06
+  },
+  "ledger": {
+    "path": "var/ledger.jsonl",
+    "phash_max_dist": 10
+  },
+  "cli": {
+    "default_out_dir": "out"
+  },
+  "pdf": {
+    "frame_min_w_frac": 0.3,
+    "frame_min_h_frac": 0.2,
+    "frame_margin_pt": 2,
+    "tick_max_len_pt": 12,
+    "tick_attach_pt": 3,
+    "tick_merge_pt": 0.5,
+    "max_ticks": 40,
+    "label_x_tol_pt": 14,
+    "label_y_tol_pt": 8,
+    "tick_label_max_offset_pt": 30,
+    "title_gap_pt": 8,
+    "sample_stride_pt": 1,
+    "min_points_per_curve": 20,
+    "min_cols_per_curve": 8,
+    "grid_gray_tol": 0.03,
+    "grid_gray_min": 0.85
+  }
+}

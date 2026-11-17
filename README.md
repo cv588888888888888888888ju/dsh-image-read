@@ -19,8 +19,8 @@ DeepSeek Harness（DSH）插件：把**规则场景**的图片读取做成确定
 ## 环境
 
 - Node.js >= 22.13（DSH 宿主）
-- Python 3，已装 `numpy` / `Pillow` / `opencv-python`
-- `chart_read` 额外需要 [chart2data](https://github.com/)（可选，不用图表就不装）
+- Python 3，依赖见 [`requirements.txt`](requirements.txt)：`pip install -r requirements.txt`
+- `chart_read` 用仓库自带的 [`vendor/chart2data`](vendor/chart2data/README.md)，不需要另装；读 PDF 图表时再加 `pdfplumber`
 
 ## 安装
 
@@ -31,6 +31,8 @@ dsh plugin --profile web add link:/path/to/dsh-image-read
 ```
 
 重启一次 `dsh web`（或进入下一回合）后，五个工具进入 PTC 的 `tools`。
+
+`chart_read` 不需要再配外部 chart2data：默认指向仓库内的 `vendor/chart2data`。
 
 ## 用法
 
@@ -58,17 +60,17 @@ const ops = await tools.img_ops({
 
 ## 配置
 
-所有可调值在 [`img.config.json`](img.config.json)：`python` 解释器、`chart2dataRoot`（改成你的 chart2data 路径）、`workDir`、各工具阈值。
+所有可调值在 [`img.config.json`](img.config.json)：`python` 解释器、`chart2dataRoot`（默认 `vendor/chart2data`；相对路径按 `img.config.json` 所在目录解析）、`workDir`、各工具阈值。
 
 ## 自检
 
 ```sh
 node acceptance/selftest.mjs
-# 图表用例需要 chart2data + 一张图表图：
+# 换自己的图表图：
 CHART_FIXTURE=/path/to/chart.png node acceptance/selftest.mjs
 ```
 
-夹具全部是**合成**的，可用 `python3 acceptance/make_fixtures.py` 重新生成。
+图表用仓库自带的 `acceptance/fixtures/chart/sample_plot.png`；滑块 / 旋转 / 曲线夹具是合成的，可用 `python3 acceptance/make_fixtures.py` 重新生成。
 
 ## 限制
 
@@ -86,8 +88,9 @@ bridge/main.py      算法实现
 img.config.json     可调值
 INTERFACE.md        契约
 acceptance/         selftest + 合成夹具生成器
+vendor/chart2data/  图表截图 → 曲线/数据点（随仓库分发，MIT）
 ```
 
 ## License
 
-MIT
+MIT。`vendor/chart2data` 同为本仓库作者的 MIT 代码，随仓库一起分发。

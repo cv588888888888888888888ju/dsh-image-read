@@ -1,6 +1,6 @@
 {
   "python": "/usr/bin/python3",
-  "chart2dataRoot": "/path/to/chart2data",
+  "chart2dataRoot": "vendor/chart2data",
   "workDir": "/tmp/dsh-image-read",
   "timeoutMs": 120000,
   "chart": {

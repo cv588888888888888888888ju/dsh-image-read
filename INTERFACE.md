@@ -7,14 +7,14 @@
 - 包名 `dsh-image-read`；bundle 入口 `./cordis.patch.yml`；宿主侧入口 `index.js`。
 - 依赖服务：`tools`（`inject: ['tools']`）；没有该服务的 profile 静默不激活。
 - 安装：`dsh plugin --profile <p> add link:<绝对路径>`；开发期用 `link:`（改源码即生效）。
-- Python 侧不引新包：只用 `img.config.json` 指定的解释器及其已装依赖（本机 numpy / Pillow / opencv）。
+- Python 依赖：`numpy` / `Pillow` / `opencv-python`（见 `requirements.txt`）；`chart_read` 走仓库自带的 `vendor/chart2data`，其 PDF 输入另需 `pdfplumber`。
 
 ## 2. 配置契约
 
 | 键 | 类型 | 谁读 | 语义 |
 |---|---|---|---|
 | `python` | string | `lib/bridge.js` | 运行 `bridge/main.py` 的解释器绝对路径 |
-| `chart2dataRoot` | string | `bridge/main.py` | chart2data 包目录绝对路径；其父目录进 PYTHONPATH |
+| `chart2dataRoot` | string | `bridge/main.py` | chart2data 包目录；可写相对路径，按 `img.config.json` 所在目录解析；其父目录进 PYTHONPATH |
 | `workDir` | string | `bridge/main.py` | 工件根目录；不存在则创建 |
 | `timeoutMs` | int | `lib/bridge.js` / `bridge/main.py` | 单次调用上限（宿主进程与 Python 子进程同值） |
 | `chart.previewPoints` | int | `bridge/main.py` | 每条曲线内联预览点上限 |
