@@ -1,0 +1,27 @@
+{
+  "python": "/usr/bin/python3",
+  "chart2dataRoot": "/path/to/chart2data",
+  "workDir": "/tmp/dsh-image-read",
+  "timeoutMs": 120000,
+  "chart": {
+    "previewPoints": 40,
+    "minR2": 0.9
+  },
+  "slide": {
+    "threshold": 0.25,
+    "fineRadius": 12
+  },
+  "rotate": {
+    "features": 2000,
+    "maxMatches": 300,
+    "minInliers": 20,
+    "minInlierRatio": 0.25,
+    "scaleMin": 0.8,
+    "scaleMax": 1.25,
+    "coarseStep": 1
+  },
+  "curve": {
+    "minPixels": 200,
+    "maxPoints": 80
+  }
+}

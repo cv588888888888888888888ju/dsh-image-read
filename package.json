@@ -1,0 +1,31 @@
+{
+  "name": "dsh-image-read",
+  "version": "0.1.0",
+  "private": false,
+  "description": "DSH 插件：规则场景图片读取（图表曲线→方程/数据点），PTC 可连续调用。",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "bridge",
+    "img.config.json",
+    "cordis.patch.yml",
+    "INTERFACE.md",
+    "README.md",
+    "acceptance"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "license": "MIT"
+}

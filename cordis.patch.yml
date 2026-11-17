@@ -1,0 +1,6 @@
+# dsh-image-read — bundle patch layer
+# 可调值见 img.config.json（唯一值文件）；本文件只做装载。
+- insert:
+    - id: dsh-image-read
+      name: dsh-image-read
+      config: {}
